@@ -15,10 +15,10 @@ app.get('/', (req, res) =>{
     res.json("Weather App Information")
 })
 
-let URL = `https://api.openweathermap.org/data/2.5/weather?zip=92111,us&APPID=${process.env.REACT_APP_API_KEY}&units=imperial`;
-console.log(process.env.REACT_APP_API_KEY, "API KIMBERLY")
 
 app.get('/api/weather', (req, res) => {
+  let URL = `https://api.openweathermap.org/data/2.5/weather?zip=92111,us&APPID=${process.env.REACT_APP_API_KEY}&units=imperial`;
+  console.log(process.env.REACT_APP_API_KEY, "API KIMBERLY")
     fetch(URL)
     .then((response) => response.json())
     .then((data) => {
