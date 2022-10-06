@@ -20,7 +20,7 @@ const handleSanDiego = () => {
   
 };
 
-// *******Fetches Houstan/Card 2 Weather *************
+// *******Fetches Houston/Card 2 Weather *************
 
 const handleHouston = () => {
     fetch('http://localhost:1996/api/houston')
@@ -31,13 +31,13 @@ const handleHouston = () => {
   
 };
 
-// *******Fetches Houstan/Card 2 Weather *************
+// *******Fetches NYC/Card 3 Weather *************
 
 const handleNYC = () => {
     fetch('http://localhost:1996/api/newyork')
     .then((response) => response.json())
     .then((data) => {console.log(data)
-    setHous(data);
+    setNyc(data);
 })
   
 };
