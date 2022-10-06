@@ -4,6 +4,7 @@ import {useState, useEffect} from 'react';
 
 function Search() {
     const [search, setSearch] = useState("");
+    const [weather, setWeather] = useState({});
 
     const searchPressed = () => {
         console.log('Search Pressed!')
@@ -12,7 +13,7 @@ function Search() {
         fetch(`http://localhost:1996/api/search?zip=${search}`)
         .then(res => res.json())
         .then((results) => {
-            console.log(results);
+            setWeather(results);
         });
     }
 
@@ -24,21 +25,29 @@ function Search() {
          <input type="text" placeholder = "Search Zip Code..." onChange = {(e) =>setSearch(e.target.value)} />
         <button onClick={searchPressed}>Search</button>
         </div>
-        {/* City */}
-            <div>New York City, USA</div>
+
+        {/* see if weather.main is undefined use ternary operator */}
+         {typeof weather.main != "undefined" ? (
+         <div>
+          {/* City */}
+            <p>{weather.name}</p>
         
          {/* Temperature */}
-         <div>32 F</div>
-
+             <p>{weather.main.temp}</p>
           {/* Latitude */}
-          <div>191 </div>
+          <p>{weather.coord.lat} </p>
 
           {/* Longitude */}
-          <div>829 </div>
+            <p>{weather.coord.lon} </p>
 
           {/* Description */}
-          <div>Windy </div>
+             <p>{weather.weather[0].description} </p>
 
+          </div>
+         )
+          : (
+        ''
+       )}
       </header>
     </div>
   );
