@@ -1,11 +1,13 @@
 import React from 'react';
 import {useState, useEffect} from 'react';
 import '../App.css';
+import Search from './searchbar.js'
 
 function Display() {
-    const [place, setPlace] = useState(null);  
+    const [place, setPlace] = useState(null); 
+    // const [search, setSearch] = useState(""); 
 
-// *******Fetches Weather *************
+// *******Fetches San Diego/Card 1 Weather *************
 
 const handleFetch = () => {
     fetch('http://localhost:1996/api/weather')
@@ -43,7 +45,12 @@ if(!place){
             </div>
         </div>
      </header>
-        
+     {/* <div className="Search-Display"> */}
+        {/* <input type="text" placeholder="Enter Zip Code" onChange={(e) => setSearch(e.target.value)}/> */}
+        {/* handleFetch might need to be different */}
+        {/* <button onClick={handleFetch}> Search </button> */}
+     {/* </div> */}
+        <Search />
     </div>
   );
 }

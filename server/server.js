@@ -26,4 +26,17 @@ app.get('/api/weather', (req, res) => {
     });
   });
 
+
+  app.get('/api/search', (req, res) => {
+    //you will be pulling the zip data from a query parameter
+    const zip = req.query.zip;
+    let website = `https://api.openweathermap.org/data/2.5/weather?zip=${zip},us&APPID=${process.env.REACT_APP_API_KEY}&units=imperial`;
+    console.log(process.env.REACT_APP_API_KEY, "API WEBSITE")
+      fetch(website)
+      .then((response) => response.json())
+      .then((data) => {
+        res.send(data);
+      });
+    });
+
 app.listen(PORT, () => console.log(`Hola! Server is running on port ${PORT}`));
