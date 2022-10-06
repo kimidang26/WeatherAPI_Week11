@@ -5,23 +5,52 @@ import Search from './searchbar.js'
 
 function Display() {
     const [place, setPlace] = useState(null); 
-    // const [search, setSearch] = useState(""); 
+    const [hous, setHous] = useState(null);
+    const [nyc, setNyc] = useState(null);
+
 
 // *******Fetches San Diego/Card 1 Weather *************
 
-const handleFetch = () => {
-    fetch('http://localhost:1996/api/weather')
+const handleSanDiego = () => {
+    fetch('http://localhost:1996/api/sandiego')
     .then((response) => response.json())
     .then((data) => {console.log(data)
     setPlace(data);
 })
   
 };
+
+// *******Fetches Houstan/Card 2 Weather *************
+
+const handleHouston = () => {
+    fetch('http://localhost:1996/api/houston')
+    .then((response) => response.json())
+    .then((data) => {console.log(data)
+    setHous(data);
+})
+  
+};
+
+// *******Fetches Houstan/Card 2 Weather *************
+
+const handleNYC = () => {
+    fetch('http://localhost:1996/api/newyork')
+    .then((response) => response.json())
+    .then((data) => {console.log(data)
+    setHous(data);
+})
+  
+};
+
 useEffect(() => { 
-    handleFetch(); 
+    handleSanDiego(); 
+    handleHouston();
+    handleNYC();
 }, []);
 
-if(!place){
+
+if(!place || !hous || !nyc){
+// if(!place){
     return <div>Loading...</div>
 } else {
 
@@ -33,23 +62,32 @@ if(!place){
        
       <header className="App-Display">
          <div className="col-4">
-            <div className="card-body">
+            <div className="card-body-1">
                 <h2>City #1 </h2>
                     <p>City: {place.name}</p>
                     <p>Temperature:{place.main.temp}</p>
                     <p>Latitude:{place.coord.lat}</p>
                     <p>Longitude: {place.coord.lat}</p>
                     <p>Description: {place.weather[0].description}</p>
-            {/* <input type="text" value= {place} onChange={(e) => setPlace(e.target.value)} />
-            <button onClick={handleFetch}>Search</button> */}
+            </div>
+            <div className="card-body-2">
+                <h2>City #2 </h2>
+                    <p>City: {hous.name}</p>
+                    <p>Temperature:{hous.main.temp}</p>
+                    <p>Latitude:{hous.coord.lat}</p>
+                    <p>Longitude: {hous.coord.lat}</p>
+                    <p>Description: {hous.weather[0].description}</p>
+            </div>
+            <div className="card-body-3">
+                <h2>City #3 </h2>
+                    <p>City: {nyc.name}</p>
+                    <p>Temperature:{nyc.main.temp}</p>
+                    <p>Latitude:{nyc.coord.lat}</p>
+                    <p>Longitude: {nyc.coord.lat}</p>
+                    <p>Description: {nyc.weather[0].description}</p>
             </div>
         </div>
      </header>
-     {/* <div className="Search-Display"> */}
-        {/* <input type="text" placeholder="Enter Zip Code" onChange={(e) => setSearch(e.target.value)}/> */}
-        {/* handleFetch might need to be different */}
-        {/* <button onClick={handleFetch}> Search </button> */}
-     {/* </div> */}
         <Search />
     </div>
   );

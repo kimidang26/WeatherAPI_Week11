@@ -16,9 +16,9 @@ app.get('/', (req, res) =>{
 })
 
 
-app.get('/api/weather', (req, res) => {
+app.get('/api/sandiego', (req, res) => {
   let URL = `https://api.openweathermap.org/data/2.5/weather?zip=92111,us&APPID=${process.env.REACT_APP_API_KEY}&units=imperial`;
-  console.log(process.env.REACT_APP_API_KEY, "API KIMBERLY")
+  console.log(process.env.REACT_APP_API_KEY, "API SAN DIEGO")
     fetch(URL)
     .then((response) => response.json())
     .then((data) => {
@@ -26,6 +26,26 @@ app.get('/api/weather', (req, res) => {
     });
   });
 
+  app.get('/api/houston', (req, res) => {
+    let HOUS = `https://api.openweathermap.org/data/2.5/weather?zip=77001,us&APPID=${process.env.REACT_APP_API_KEY}&units=imperial`;
+    console.log(process.env.REACT_APP_API_KEY, "API HOUSTON")
+      fetch(HOUS)
+      .then((response) => response.json())
+      .then((data) => {
+        res.send(data);
+      });
+    });
+
+    app.get('/api/newyork', (req, res) => {
+      let NYC = `https://api.openweathermap.org/data/2.5/weather?zip=10001,us&APPID=${process.env.REACT_APP_API_KEY}&units=imperial`;
+      console.log(process.env.REACT_APP_API_KEY, "API HOUSTON")
+        fetch(NYC)
+        .then((response) => response.json())
+        .then((data) => {
+          res.send(data);
+        });
+      });
+  
 
   app.get('/api/search', (req, res) => {
     //you will be pulling the zip data from a query parameter
