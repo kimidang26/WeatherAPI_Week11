@@ -63,7 +63,7 @@ app.get('/api/sandiego', (req, res) => {
       .then( async (data) =>  {
         //INPUT THE QUERY
         const addSearch = await db.query('INSERT INTO recent_search (location, temp, lat, lon) VALUES ($1, $2, $3, $4) RETURNING * ',
-         [data.name, data.main.temp, data.coord.lat, data.coord.lon]);
+         [data.name, data.main.temp, data.coord.lon, data.coord.lat]);
         res.send(data);
       });
     });

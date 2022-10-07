@@ -27,7 +27,7 @@ function Recent_search({newSearch}) {
 
   return (
     <div className="Recent_Search">
-       <h2> Recent Searches</h2>
+       <h4> Recent Searches</h4>
           <table>
             <thead>
     

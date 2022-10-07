@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  
 }
 
 .App-logo {
@@ -22,6 +23,12 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+  
+}
+
+h1{
+  color: rgb(45, 0, 142);
+  font-family:monospace;
 }
 
 .App-link {
@@ -37,20 +44,69 @@
   }
 }
 
+.App-Display{
+  display: table-row-group;
+  width:auto;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid #fff;
+  padding: 20px;
+}
 
+.col-4{
+  width: 400px;
+  display: -webkit-inline-flex;
+}
 
 .card-body-1{
   border-style: solid;
   background-color: pink;
+  width: 1200px;
+  float: left;
+  padding: 100px;
+  border: 10px solid white;
 }
 
 .card-body-2{
   border-style: solid;
   background-color: lightblue;
+  width: 1200px;
+  float: left;
+  padding: 100px;
+  border: 10px solid white;
 }
 
 .card-body-3{
   border-style: solid;
   background-color:peachpuff;
+  width: 1200px;
+  float: left;
+  padding: 100px;
+  border: 10px solid white;
+}
+
+.card-body-4{
+  border-style: solid;
+  background-color:rgb(230, 255, 185);
+  width: auto;
+  float: left;
+  padding: 100px;
+  border: 10px solid white;
+}
+
+.Search {
+  width: auto;
+}
+
+video{
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: -1;
 }
 

@@ -1,6 +1,6 @@
 // import './App.css';
 import Header from "./components/header.js";
-import Display from "./components/weatherdisplay.js"
+import Display from "./components/weatherdisplay.js";
 
 function App() {
   return (

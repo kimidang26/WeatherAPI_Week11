@@ -27,6 +27,7 @@ function Search() {
     <div className="Search">
       <header className="App-search">
         <div>
+          <h2>Search A City</h2>
          <input type="text" placeholder = "Search Zip Code..." onChange = {(e) =>{setSearch(e.target.value)}} />
         <button onClick={searchPressed}>Search</button>
         </div>
@@ -45,6 +46,7 @@ function Search() {
         ''
        )}
       </header>
+      <br></br>
       <Recent_search newSearch={weather}/>
     </div>
   );

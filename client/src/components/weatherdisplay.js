@@ -2,6 +2,7 @@ import React from 'react';
 import {useState, useEffect} from 'react';
 import '../App.css';
 import Search from './searchbar.js'
+import cloudVideo from "../assets/Clouds - 1154.mp4"
 
 function Display() {
     const [place, setPlace] = useState(null); 
@@ -59,7 +60,7 @@ if(!place || !hous || !nyc){
 
   return (
     <div className="Display">
-       
+    <video src={cloudVideo} autoPlay loop muted />
       <header className="App-Display">
          <div className="col-4">
             <div className="card-body-1">
@@ -86,9 +87,12 @@ if(!place || !hous || !nyc){
                     <p>Longitude: {nyc.coord.lat}</p>
                     <p>Description: {nyc.weather[0].description}</p>
             </div>
+            <div className="card-body-4">
+            <Search />
+            </div>
         </div>
      </header>
-        <Search />
+        
     </div>
   );
 }
