@@ -1,11 +1,14 @@
 import React from 'react';
 import {useState, useEffect} from 'react';
+import Recent_search from "./recentsearch.js";
 
 
 function Search() {
     const [search, setSearch] = useState("");
     const [weather, setWeather] = useState({});
+  
 
+    // ***********Fetching the search ************
     const searchPressed = () => {
         console.log('Search Pressed!')
         console.log(search);
@@ -17,38 +20,32 @@ function Search() {
         });
     }
 
+//handleaddsearch
+//post request
 
   return (
     <div className="Search">
       <header className="App-search">
         <div>
-         <input type="text" placeholder = "Search Zip Code..." onChange = {(e) =>setSearch(e.target.value)} />
+         <input type="text" placeholder = "Search Zip Code..." onChange = {(e) =>{setSearch(e.target.value)}} />
         <button onClick={searchPressed}>Search</button>
         </div>
 
         {/* see if weather.main is undefined use ternary operator */}
          {typeof weather.main != "undefined" ? (
          <div>
-          {/* City */}
             <p>{weather.name}</p>
-        
-         {/* Temperature */}
-             <p>{weather.main.temp}</p>
-          {/* Latitude */}
-          <p>{weather.coord.lat} </p>
-
-          {/* Longitude */}
+            <p>{weather.main.temp}</p>
+            <p>{weather.coord.lat} </p>
             <p>{weather.coord.lon} </p>
-
-          {/* Description */}
-             <p>{weather.weather[0].description} </p>
-
+            <p>{weather.weather[0].description} </p>
           </div>
          )
           : (
         ''
        )}
       </header>
+      <Recent_search newSearch={weather}/>
     </div>
   );
 }

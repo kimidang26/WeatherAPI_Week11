@@ -1,13 +1,19 @@
 import express from 'express';
 import cors from 'cors';
 import fetch from "node-fetch";
+import db from './db/db-connection.js';
 import dotenv from "dotenv";
 dotenv.config()
+
+//routes from db
+import recentRouter from "./routes/recent.js"
 
 const app = express();
 const PORT = 1996;
 
 app.use(cors());
+
+app.use('/recent', recentRouter);
 
 console.log(`Your api key is ${process.env.REACT_APP_API_KEY}`);
 
@@ -47,14 +53,17 @@ app.get('/api/sandiego', (req, res) => {
       });
   
 
-  app.get('/api/search', (req, res) => {
+  app.get('/api/search', async (req, res) => {
     //you will be pulling the zip data from a query parameter
     const zip = req.query.zip;
     let website = `https://api.openweathermap.org/data/2.5/weather?zip=${zip},us&APPID=${process.env.REACT_APP_API_KEY}&units=imperial`;
     console.log(process.env.REACT_APP_API_KEY, "API WEBSITE")
       fetch(website)
       .then((response) => response.json())
-      .then((data) => {
+      .then( async (data) =>  {
+        //INPUT THE QUERY
+        const addSearch = await db.query('INSERT INTO recent_search (location, temp, lat, lon) VALUES ($1, $2, $3, $4) RETURNING * ',
+         [data.name, data.main.temp, data.coord.lat, data.coord.lon]);
         res.send(data);
       });
     });
